@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject var viewModel = HomeViewModel()
+    
+    //@StateObject 는 HomeViewModel에서 만든 네트워크 작업을 사용할 수 있게 해줍니다. 따로 공부필요!
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
