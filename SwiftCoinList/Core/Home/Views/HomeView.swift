@@ -15,10 +15,13 @@ struct HomeView: View {
                 // 상승률 순위
                 TopMoversView()
                 
-                // 모든 코인
+                Divider() // 섹션나누는 선
                 
+                // 모든 코인
+                AllCoinsView()
             }
             .navigationTitle("실시간 가격")
+            
         }
     }
 }
