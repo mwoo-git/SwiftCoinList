@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Coin: Codable {
+// https://app.quicktype.io/ 를 통해서 Json 데이터를 변환해서 가져온 후 수정하였습니다. 
+
+struct Coin: Codable, Identifiable { // Identifiable 추가 
     let id, symbol, name: String
     let image: String
     let currentPrice: Double

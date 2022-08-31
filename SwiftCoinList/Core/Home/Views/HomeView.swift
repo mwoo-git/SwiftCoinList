@@ -22,7 +22,7 @@ struct HomeView: View {
                 Divider() // 섹션나누는 선
                 
                 // 모든 코인
-                AllCoinsView()
+                AllCoinsView(viewModel: viewModel)
             }
             .navigationTitle("실시간 가격")
             

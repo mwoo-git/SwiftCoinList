@@ -11,6 +11,8 @@ class HomeViewModel: ObservableObject {
   
     // @stateOject 를 사용해서 함수 실행
     
+    @Published var coins = [Coin]() //  models 폴더에 정의한 데이터 모델을 가져옵니다.
+    
     init() {
         fetchCoinData() //해당 함수를 실행
     }
@@ -42,7 +44,8 @@ class HomeViewModel: ObservableObject {
             //Json 정보를 디코딩하여 풀어서 받기
             do {
                 let coins = try JSONDecoder().decode([Coin].self, from: data)
-                print("DEBUG: Coins \(coins)")
+                self.coins = coins
+                //print("DEBUG: Coins \(coins)")
             } catch let error {
                 print("DEBUG: Failed to decode with error: \(error)")
             }
