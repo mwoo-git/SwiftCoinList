@@ -29,13 +29,19 @@ struct AllCoinsView: View {
             
             ScrollView {
                 VStack {
-                    ForEach(viewModel.coins) { coin in //받아온 코인갯수만큼 반복
+                    ForEach(viewModel.coins) { coin in
                         CoinRowView(coin: coin)
                     }
                     
-//                    ForEach(0 ..< 50, id: \.self) { _ in
-//                        CoinRowView()
-//                    }
+                    //                    ForEach(viewModel.coins.sorted(by: { $0.priceChangePercentage24H > $1.priceChangePercentage24H })) { coin in //받아온 코인갯수만큼 반복
+                    
+                    //                        CoinRowView(coin: coin)
+                    //                    } //상승률 순위 정렬
+                    
+                    //                    ForEach(0 ..< 50, id: \.self) { _ in
+                    //                        CoinRowView()
+                    //                    } // 초기 빌드 할 때
+                    
                 }
             }
         }
