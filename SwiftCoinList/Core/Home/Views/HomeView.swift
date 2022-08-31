@@ -17,7 +17,7 @@ struct HomeView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 
                 // 상승률 순위
-                TopMoversView()
+                TopMoversView(viewModel: viewModel)
                 
                 Divider() // 섹션나누는 선
                 

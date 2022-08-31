@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     // @stateOject 를 사용해서 함수 실행
     
     @Published var coins = [Coin]() //  models 폴더에 정의한 데이터 모델을 가져옵니다.
+    @Published var topMovingCoins = [Coin]()
     
     init() {
         fetchCoinData() //해당 함수를 실행
@@ -44,7 +45,10 @@ class HomeViewModel: ObservableObject {
             //Json 정보를 디코딩하여 풀어서 받기
             do {
                 let coins = try JSONDecoder().decode([Coin].self, from: data)
-                self.coins = coins
+                DispatchQueue.main.async { // 메인쓰레드에서 순차적으로 실행해라
+                    self.coins = coins
+                    self.configureTopMovingCoins()
+                }
                 //print("DEBUG: Coins \(coins)")
             } catch let error {
                 print("DEBUG: Failed to decode with error: \(error)")
@@ -52,5 +56,11 @@ class HomeViewModel: ObservableObject {
             
         }.resume()
         //리슘은 작업이 중단된 경우 다시 시작합니다.
+    }
+    
+    // 상승률 순위 정렬 함수
+    func configureTopMovingCoins() {
+        let topMovers = coins.sorted(by: { $0.priceChangePercentage24H > $1.priceChangePercentage24H })
+        self.topMovingCoins = Array(topMovers.prefix(5)) //상위 5개만 가져옵니다.
     }
 }
