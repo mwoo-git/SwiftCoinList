@@ -36,8 +36,16 @@ class HomeViewModel: ObservableObject {
             
             // 데이터를 가져오면
             guard let data = data else { return }
-            let dataAsString = String(data: data, encoding: .utf8) // 데이터를 문자열로 변환
-            print("DEBUG: Data \(dataAsString)")
+            //let dataAsString = String(data: data, encoding: .utf8) // 데이터를 문자열로 변환
+            //print("DEBUG: Data \(dataAsString)")
+            
+            //Json 정보를 디코딩하여 풀어서 받기
+            do {
+                let coins = try JSONDecoder().decode([Coin].self, from: data)
+                print("DEBUG: Coins \(coins)")
+            } catch let error {
+                print("DEBUG: Failed to decode with error: \(error)")
+            }
             
         }.resume()
         //리슘은 작업이 중단된 경우 다시 시작합니다.
