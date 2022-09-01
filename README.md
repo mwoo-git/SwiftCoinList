@@ -11,7 +11,7 @@
 * 다크 모드 색 변경
 
 ## Demo
-<img src="https://github.com/hanulbom/SwiftCoinList/blob/main/demo.gif">
+<img src="https://github.com/mwoo-git/SwiftCoinList/blob/main/demo.gif">
 
 
 
